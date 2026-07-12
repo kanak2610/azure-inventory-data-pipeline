@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Inventory & Supply Chain Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root{
+    --bg:#12141a; --panel:#1a1d26; --panel2:#20232e; --border:#2b2f3b;
+    --text:#e8e9ed; --sub:#9498a6; --muted:#6b6f7d;
+    --accent:#3a7bd5; --accent2:#5fd0a6; --warn:#e0a23a; --danger:#e5636b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  header{padding:20px 28px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+  header h1{font-size:18px;font-weight:600;margin:0;letter-spacing:.2px}
+  header p{margin:2px 0 0;font-size:12px;color:var(--muted)}
+  nav{display:flex;gap:4px;padding:14px 28px 0}
+  nav button{background:none;border:none;color:var(--sub);font-size:13px;padding:10px 16px;border-radius:8px 8px 0 0;cursor:pointer;border-bottom:2px solid transparent}
+  nav button.active{color:var(--text);border-bottom:2px solid var(--accent);background:var(--panel)}
+  main{padding:24px 28px 40px}
+  .page{display:none}
+  .page.active{display:block}
+  .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+  .kpi{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px 18px}
+  .kpi .label{font-size:12px;color:var(--sub);margin-bottom:6px}
+  .kpi .value{font-size:24px;font-weight:600}
+  .kpi .value.danger{color:var(--danger)}
+  .kpi .value.good{color:var(--accent2)}
+  .grid2{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;margin-bottom:16px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px}
+  .card h3{margin:0 0 14px;font-size:13px;font-weight:600;color:var(--sub);text-transform:uppercase;letter-spacing:.4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;color:var(--muted);font-weight:500;padding:8px 6px;border-bottom:1px solid var(--border);font-size:11px;text-transform:uppercase}
+  td{padding:9px 6px;border-bottom:1px solid var(--border)}
+  tr:last-child td{border-bottom:none}
+  .pill{font-size:11px;padding:2px 8px;border-radius:20px;background:rgba(229,99,107,.15);color:var(--danger)}
+  .pill.fast{background:rgba(95,208,166,.15);color:var(--accent2)}
+  .pill.medium{background:rgba(224,162,58,.15);color:var(--warn)}
+  .pill.slow{background:rgba(229,99,107,.15);color:var(--danger)}
+  .chart-wrap{position:relative;width:100%}
+  footer{padding:14px 28px;border-top:1px solid var(--border);font-size:11px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Inventory & supply chain dashboard</h1>
+    <p>Source: gold layer &middot; local pipeline output (gold/*.csv) &middot; regenerate anytime with 05_generate_dashboard.py</p>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">Last refresh: 2026-07-12</p>
+</header>
+
+<nav>
+  <button class="tab active" data-page="p1">Inventory health</button>
+  <button class="tab" data-page="p2">Supplier performance</button>
+  <button class="tab" data-page="p3">Sales trends</button>
+</nav>
+
+<main>
+
+  <div class="page active" id="p1">
+    <div class="kpi-row">
+      <div class="kpi"><div class="label">Total stock value</div><div class="value">&#8377;405.9L</div></div>
+      <div class="kpi"><div class="label">Low stock alerts</div><div class="value danger">19</div></div>
+      <div class="kpi"><div class="label">Inventory rows tracked</div><div class="value">75</div></div>
+      <div class="kpi"><div class="label">Warehouses</div><div class="value">3</div></div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Low stock alerts &mdash; top shortfalls</h3>
+        <table>
+          <tr><th>Product</th><th>Warehouse</th><th>On hand</th><th>Threshold</th><th>Shortfall</th></tr>
+          <tr><td>Product 24</td><td>Delhi North</td><td>25</td><td>133</td><td><span class="pill">108</span></td></tr>
+<tr><td>Product 17</td><td>Mumbai West</td><td>36</td><td>140</td><td><span class="pill">104</span></td></tr>
+<tr><td>Product 12</td><td>Mumbai West</td><td>43</td><td>143</td><td><span class="pill">100</span></td></tr>
+<tr><td>Product 18</td><td>Mumbai West</td><td>36</td><td>115</td><td><span class="pill">79</span></td></tr>
+<tr><td>Product 16</td><td>Mumbai West</td><td>32</td><td>93</td><td><span class="pill">61</span></td></tr>
+<tr><td>Product 5</td><td>Jaipur Central</td><td>78</td><td>130</td><td><span class="pill">52</span></td></tr>
+
+        </table>
+      </div>
+      <div class="card">
+        <h3>Stock value by warehouse</h3>
+        <div class="chart-wrap" style="height:280px"><canvas id="stockChart" role="img" aria-label="Bar chart of stock value by warehouse"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="p2">
+    <div class="kpi-row">
+      <div class="kpi"><div class="label">Avg on-time delivery</div><div class="value">56.4%</div></div>
+      <div class="kpi"><div class="label">Total orders (3mo)</div><div class="value">120</div></div>
+      <div class="kpi"><div class="label">Best on-time supplier</div><div class="value good">Acme Traders 62.5%</div></div>
+      <div class="kpi"><div class="label">Highest rated</div><div class="value">Reliable Supplies 4.6</div></div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>On-time delivery % by supplier</h3>
+        <div class="chart-wrap" style="height:280px"><canvas id="supChart" role="img" aria-label="Bar chart of on-time delivery percent by supplier"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Supplier scorecard</h3>
+        <table>
+          <tr><th>Supplier</th><th>Orders</th><th>Avg delay</th><th>On-time</th><th>Rating</th></tr>
+          <tr><td>Acme Traders</td><td>16</td><td>0.50d</td><td>62.5%</td><td>4.2</td></tr>
+<tr><td>NorthStar Supply</td><td>24</td><td>0.67d</td><td>58.3%</td><td>4.0</td></tr>
+<tr><td>Global Parts Co</td><td>19</td><td>0.42d</td><td>57.9%</td><td>3.2</td></tr>
+<tr><td>Fastrack Vendors</td><td>25</td><td>0.76d</td><td>56.0%</td><td>3.5</td></tr>
+<tr><td>Reliable Supplies</td><td>36</td><td>1.06d</td><td>47.2%</td><td>4.6</td></tr>
+
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="p3">
+    <div class="kpi-row">
+      <div class="kpi"><div class="label">Revenue (3 months)</div><div class="value">&#8377;86.4L</div></div>
+      <div class="kpi"><div class="label">Units sold (3 months)</div><div class="value">4177</div></div>
+      <div class="kpi"><div class="label">Latest month growth</div><div class="value danger">-51.8%</div></div>
+      <div class="kpi"><div class="label">Fast-moving products</div><div class="value good">9</div></div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Monthly revenue trend</h3>
+        <div class="chart-wrap" style="height:280px"><canvas id="trendChart" role="img" aria-label="Line chart of monthly revenue"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Top moving products</h3>
+        <table>
+          <tr><th>Product</th><th>Category</th><th>Units sold</th><th>Movement</th></tr>
+          <tr><td>Product 15</td><td>Electronics</td><td>321</td><td><span class="pill fast">Fast</span></td></tr>
+<tr><td>Product 10</td><td>Furniture</td><td>265</td><td><span class="pill fast">Fast</span></td></tr>
+<tr><td>Product 5</td><td>Stationery</td><td>247</td><td><span class="pill fast">Fast</span></td></tr>
+<tr><td>Product 12</td><td>Furniture</td><td>212</td><td><span class="pill fast">Fast</span></td></tr>
+<tr><td>Product 14</td><td>Apparel</td><td>202</td><td><span class="pill fast">Fast</span></td></tr>
+
+        </table>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>Local dashboard rendered live from this project's gold/*.csv pipeline output. In production this connects live to Databricks SQL via Power BI &mdash; see powerbi/connect_to_gold_layer.md</footer>
+
+<script>
+document.querySelectorAll('.tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.page).classList.add('active');
+  });
+});
+
+const gridColor = '#2b2f3b';
+const textColor = '#9498a6';
+
+new Chart(document.getElementById('stockChart'), {
+  type: 'bar',
+  data: { labels: ["Mumbai West", "Jaipur Central", "Delhi North"],
+    datasets: [{ data: [124.3, 131.2, 150.4], backgroundColor:'#3a7bd5', borderRadius:4, maxBarThickness:50 }] },
+  options: { responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>'₹'+c.raw+'L'}} },
+    scales:{ y:{ ticks:{color:textColor,callback:v=>'₹'+v+'L'}, grid:{color:gridColor} },
+             x:{ ticks:{color:textColor}, grid:{display:false} } } }
+});
+
+new Chart(document.getElementById('supChart'), {
+  type: 'bar',
+  data: { labels: ["Acme", "NorthStar", "Global", "Fastrack", "Reliable"],
+    datasets: [{ data:[62.5, 58.3, 57.9, 56.0, 47.2], backgroundColor:'#5fd0a6', borderRadius:4, maxBarThickness:36 }] },
+  options: { responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>c.raw+'%'}} },
+    scales:{ y:{ beginAtZero:true, max:80, ticks:{color:textColor,callback:v=>v+'%'}, grid:{color:gridColor} },
+             x:{ ticks:{color:textColor}, grid:{display:false} } } }
+});
+
+new Chart(document.getElementById('trendChart'), {
+  type: 'line',
+  data: { labels:["May 2026", "Jun 2026", "Jul 2026"],
+    datasets:[{ data:[35.9, 34.1, 16.5], borderColor:'#3a7bd5', backgroundColor:'rgba(58,123,213,.1)',
+      fill:true, tension:.3, pointRadius:4, pointBackgroundColor:'#3a7bd5' }] },
+  options: { responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>'₹'+c.raw+'L'}} },
+    scales:{ y:{ ticks:{color:textColor,callback:v=>'₹'+v+'L'}, grid:{color:gridColor} },
+             x:{ ticks:{color:textColor}, grid:{display:false} } } }
+});
+</script>
+
+</body>
+</html>
