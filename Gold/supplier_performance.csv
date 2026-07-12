@@ -1,0 +1,6 @@
+supplier_id,supplier_name,total_orders,avg_delay_days,on_time_pct,total_qty_ordered,current_rating
+SUP01,Acme Traders,16,0.5,62.5,1755,4.2
+SUP05,NorthStar Supply,24,0.67,58.3,2582,4.0
+SUP02,Global Parts Co,19,0.42,57.9,2098,3.2
+SUP04,Fastrack Vendors,25,0.76,56.0,2692,3.5
+SUP03,Reliable Supplies,36,1.06,47.2,4397,4.6

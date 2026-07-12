@@ -1,0 +1,20 @@
+inventory_id,product_id,product_name,category,warehouse_id,warehouse_name,quantity_on_hand,reorder_threshold,stock_value,last_updated,shortfall
+INV0071,P024,Product 24,Furniture,WH02,Delhi North,25,133,123703.50000000001,2026-07-09,108
+INV0051,P017,Product 17,Electronics,WH03,Mumbai West,36,140,119637.0,2026-07-11,104
+INV0036,P012,Product 12,Furniture,WH03,Mumbai West,43,143,182539.30000000002,2026-07-08,100
+INV0054,P018,Product 18,Electronics,WH03,Mumbai West,36,115,154217.52,2026-07-04,79
+INV0048,P016,Product 16,Furniture,WH03,Mumbai West,32,93,93052.48,2026-07-01,61
+INV0013,P005,Product 5,Stationery,WH01,Jaipur Central,78,130,199017.78000000003,2026-07-03,52
+INV0052,P018,Product 18,Electronics,WH01,Jaipur Central,30,79,128514.59999999999,2026-07-02,49
+INV0033,P011,Product 11,Electronics,WH03,Mumbai West,57,96,29018.129999999997,2026-07-05,39
+INV0022,P008,Product 8,Furniture,WH01,Jaipur Central,57,87,126366.435,2026-07-07,30
+INV0023,P008,Product 8,Furniture,WH02,Delhi North,80,108,177356.4,2026-07-01,28
+INV0004,P002,Product 2,Stationery,WH01,Jaipur Central,108,133,124728.12000000001,2026-07-08,25
+INV0047,P016,Product 16,Furniture,WH02,Delhi North,61,81,177381.28999999998,2026-07-04,20
+INV0007,P003,Product 3,Apparel,WH01,Jaipur Central,126,145,60524.100000000006,2026-07-09,19
+INV0074,P025,Product 25,Stationery,WH02,Delhi North,85,102,292301.4,2026-07-08,17
+INV0003,P001,Product 1,Electronics,WH03,Mumbai West,108,122,18770.4,2026-07-06,14
+INV0060,P020,Product 20,Stationery,WH03,Mumbai West,48,62,90355.20000000001,2026-07-11,14
+INV0006,P002,Product 2,Stationery,WH03,Mumbai West,73,83,84306.97,2026-07-03,10
+INV0056,P019,Product 19,Grocery,WH02,Delhi North,109,119,155430.73,2026-07-03,10
+INV0064,P022,Product 22,Apparel,WH01,Jaipur Central,50,57,159657.0,2026-07-07,7

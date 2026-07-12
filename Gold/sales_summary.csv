@@ -1,0 +1,16 @@
+warehouse_id,warehouse_name,category,total_units_sold,total_revenue,num_transactions
+WH03,Mumbai West,Furniture,365,1124525.2,41
+WH02,Delhi North,Furniture,358,1006345.53,37
+WH01,Jaipur Central,Furniture,429,995263.9500000001,38
+WH03,Mumbai West,Electronics,411,882385.61,39
+WH02,Delhi North,Stationery,382,807274.94,34
+WH03,Mumbai West,Stationery,325,751474.22,31
+WH01,Jaipur Central,Electronics,311,734066.81,28
+WH01,Jaipur Central,Stationery,286,680170.09,26
+WH02,Delhi North,Electronics,301,409408.87,31
+WH03,Mumbai West,Apparel,315,397158.14,24
+WH02,Delhi North,Apparel,224,233010.46,26
+WH01,Jaipur Central,Apparel,155,222885.8,14
+WH01,Jaipur Central,Grocery,119,158868.41,12
+WH03,Mumbai West,Grocery,119,151748.66,11
+WH02,Delhi North,Grocery,77,89010.02,8

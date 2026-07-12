@@ -1,0 +1,26 @@
+product_id,product_name,category,total_units_sold,total_revenue,num_sales_txns,movement_category
+P015,Product 15,Electronics,321,893214.6,29,Fast-moving
+P010,Product 10,Furniture,265,217199.3,25,Fast-moving
+P005,Product 5,Stationery,247,630222.97,23,Fast-moving
+P012,Product 12,Furniture,212,899961.2,21,Fast-moving
+P014,Product 14,Apparel,202,134913.78,20,Fast-moving
+P003,Product 3,Apparel,199,95589.65,19,Fast-moving
+P020,Product 20,Stationery,179,336949.6,14,Fast-moving
+P007,Product 7,Grocery,174,198565.32,16,Fast-moving
+P021,Product 21,Furniture,173,609653.73,16,Fast-moving
+P004,Product 4,Electronics,161,31797.5,15,Medium-moving
+P011,Product 11,Electronics,156,79418.04,16,Medium-moving
+P023,Product 23,Stationery,154,132261.36,14,Medium-moving
+P017,Product 17,Electronics,153,508457.25,16,Medium-moving
+P022,Product 22,Apparel,148,472584.72,14,Medium-moving
+P008,Product 8,Furniture,147,14700.0,15,Medium-moving
+P025,Product 25,Stationery,147,505509.48,12,Medium-moving
+P006,Product 6,Apparel,145,149966.25,11,Medium-moving
+P019,Product 19,Grocery,141,201061.77000000002,15,Slow-moving
+P009,Product 9,Stationery,139,487304.81,15,Slow-moving
+P016,Product 16,Furniture,127,369302.02999999997,12,Slow-moving
+P002,Product 2,Stationery,127,146671.03,13,Slow-moving
+P013,Product 13,Furniture,125,505660.0,12,Slow-moving
+P001,Product 1,Electronics,117,20334.6,11,Slow-moving
+P018,Product 18,Electronics,115,492639.3,11,Slow-moving
+P024,Product 24,Furniture,103,509658.42000000004,15,Slow-moving
