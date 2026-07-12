@@ -1,0 +1,69 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment Variables
+.env
+
+# Databricks
+.databricks/
+
+# Spark
+spark-warehouse/
+metastore_db/
+
+# Delta Lake
+_delta_log/
+
+# Temporary Files
+tmp/
+temp/
+
+# Power BI Auto Recovery
+*.pbix.autosave
+*.tmp
+
+# Azure Credentials
+*.pem
+*.key
+*.pfx
+*.cer
+secrets.json
+credentials.json
+
+# Large Data Files (optional)
+*.parquet
+*.orc
+*.avro
+
+# Cache
+.cache/
