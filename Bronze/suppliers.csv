@@ -1,0 +1,10 @@
+supplier_id,supplier_name,address,contact_email,rating,source_date,_source_file,_ingest_timestamp
+SUP01,Acme Traders,"Sitapura, Jaipur",acme@example.com,4.2,2026-06-01,suppliers_2026-06-01.csv,2026-07-12T17:59:30.877891
+SUP02,Global Parts Co,"Okhla, Delhi",global@example.com,3.8,2026-06-01,suppliers_2026-06-01.csv,2026-07-12T17:59:30.877891
+SUP03,Reliable Supplies,"Andheri, Mumbai",reliable@example.com,4.6,2026-06-01,suppliers_2026-06-01.csv,2026-07-12T17:59:30.877891
+SUP04,Fastrack Vendors,"Vaishali Nagar, Jaipur",fastrack@example.com,3.5,2026-06-01,suppliers_2026-06-01.csv,2026-07-12T17:59:30.877891
+SUP01,Acme Traders,"Malviya Nagar, Jaipur",acme@example.com,4.2,2026-07-01,suppliers_2026-07-01.csv,2026-07-12T17:59:30.877891
+SUP02,Global Parts Co,"Okhla, Delhi",global@example.com,3.2,2026-07-01,suppliers_2026-07-01.csv,2026-07-12T17:59:30.877891
+SUP03,Reliable Supplies,"Andheri, Mumbai",reliable@example.com,4.6,2026-07-01,suppliers_2026-07-01.csv,2026-07-12T17:59:30.877891
+SUP04,Fastrack Vendors,"Vaishali Nagar, Jaipur",fastrack@example.com,3.5,2026-07-01,suppliers_2026-07-01.csv,2026-07-12T17:59:30.877891
+SUP05,NorthStar Supply,"Salt Lake, Kolkata",northstar@example.com,4.0,2026-07-01,suppliers_2026-07-01.csv,2026-07-12T17:59:30.877891

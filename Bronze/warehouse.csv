@@ -1,0 +1,4 @@
+warehouse_id,warehouse_name,location,capacity,_source_file,_ingest_timestamp
+WH01,Jaipur Central,Rajasthan,50000,warehouse.csv,2026-07-12T17:59:30.877891
+WH02,Delhi North,Delhi,80000,warehouse.csv,2026-07-12T17:59:30.877891
+WH03,Mumbai West,Maharashtra,65000,warehouse.csv,2026-07-12T17:59:30.877891
