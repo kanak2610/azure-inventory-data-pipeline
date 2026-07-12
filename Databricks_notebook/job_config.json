@@ -1,0 +1,48 @@
+{
+  "name": "inventory_supply_chain_pipeline",
+  "tags": {
+    "project": "inventory-supply-chain-pipeline"
+  },
+  "job_clusters": [
+    {
+      "job_cluster_key": "pipeline_cluster",
+      "new_cluster": {
+        "spark_version": "14.3.x-scala2.12",
+        "node_type_id": "Standard_DS3_v2",
+        "num_workers": 2,
+        "autotermination_minutes": 30
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "task_key": "bronze_ingestion",
+      "notebook_task": {
+        "notebook_path": "/Repos/inventory-pipeline/databricks_notebooks/01_bronze_autoloader"
+      },
+      "job_cluster_key": "pipeline_cluster"
+    },
+    {
+      "task_key": "silver_transform_scd2",
+      "depends_on": [{ "task_key": "bronze_ingestion" }],
+      "notebook_task": {
+        "notebook_path": "/Repos/inventory-pipeline/databricks_notebooks/02_silver_transform_scd2"
+      },
+      "job_cluster_key": "pipeline_cluster"
+    },
+    {
+      "task_key": "gold_kpis",
+      "depends_on": [{ "task_key": "silver_transform_scd2" }],
+      "notebook_task": {
+        "notebook_path": "/Repos/inventory-pipeline/databricks_notebooks/03_gold_kpis"
+      },
+      "job_cluster_key": "pipeline_cluster"
+    }
+  ],
+  "schedule": {
+    "quartz_cron_expression": "0 0 6 * * ?",
+    "timezone_id": "Asia/Kolkata",
+    "pause_status": "UNPAUSED"
+  },
+  "_comment": "Import this via Databricks Workflows > Jobs > Create Job > Edit as JSON. Runs Bronze -> Silver -> Gold daily at 6 AM IST, task dependencies enforce correct order."
+}
