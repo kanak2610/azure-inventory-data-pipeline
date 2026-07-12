@@ -1,0 +1,27 @@
+product_id,product_name,category,unit_price,supplier_id
+P001,Product 1,Electronics,173.8,SUP03
+P002,Product 2,Stationery,1154.89,SUP01
+P003,Product 3,Apparel,480.35,SUP04
+P004,Product 4,Electronics,197.5,SUP02
+P005,Product 5,Stationery,2551.51,SUP01
+P006,Product 6,Apparel,1034.25,SUP05
+P007,Product 7,Grocery,1141.18,SUP05
+P008,Product 8,Furniture,,SUP01
+P009,Product 9,Stationery,3505.79,SUP03
+P010,Product 10,Furniture,819.62,SUP03
+P011,Product 11,Electronics,509.09,SUP01
+P012,Product 12,Furniture,4245.1,SUP05
+P013,Product 13,Furniture,4045.28,SUP04
+P014,Product 14,Apparel,667.89,SUP04
+P015,Product 15,Electronics,2782.6,SUP05
+P016,Product 16,Furniture,2907.89,SUP01
+P017,Product 17,Electronics,3323.25,SUP03
+P018,Product 18,Electronics,4283.82,SUP01
+P019,Product 19,Grocery,1425.97,SUP03
+P020,Product 20,Stationery,1882.4,SUP02
+P021,Product 21,Furniture,3524.01,SUP01
+P022,Product 22,Apparel,3193.14,SUP05
+P023,Product 23,Stationery,858.84,SUP04
+P024,Product 24,Furniture,4948.14,SUP05
+P025,Product 25,Stationery,3438.84,SUP01
+P004,Product 4,Electronics,197.5,SUP02

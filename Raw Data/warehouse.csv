@@ -1,0 +1,4 @@
+warehouse_id,warehouse_name,location,capacity
+WH01,Jaipur Central,Rajasthan,50000
+WH02,Delhi North,Delhi,80000
+WH03,Mumbai West,Maharashtra,65000
