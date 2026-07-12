@@ -1,0 +1,8 @@
+supplier_id,supplier_name,address,contact_email,rating,effective_start,effective_end,is_current
+SUP01,Acme Traders,"Sitapura, Jaipur",acme@example.com,4.2,2026-06-01,2026-07-01,False
+SUP01,Acme Traders,"Malviya Nagar, Jaipur",acme@example.com,4.2,2026-07-01,,True
+SUP02,Global Parts Co,"Okhla, Delhi",global@example.com,3.8,2026-06-01,2026-07-01,False
+SUP02,Global Parts Co,"Okhla, Delhi",global@example.com,3.2,2026-07-01,,True
+SUP03,Reliable Supplies,"Andheri, Mumbai",reliable@example.com,4.6,2026-06-01,,True
+SUP04,Fastrack Vendors,"Vaishali Nagar, Jaipur",fastrack@example.com,3.5,2026-06-01,,True
+SUP05,NorthStar Supply,"Salt Lake, Kolkata",northstar@example.com,4.0,2026-07-01,,True
